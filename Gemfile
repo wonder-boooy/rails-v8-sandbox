@@ -31,6 +31,7 @@ end
 
 group :development do
   gem "web-console" # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "foreman", require: false # Process manager for development [https://github.com/ddollar/foreman]
 end
 
 group :test do
@@ -38,3 +39,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-rails", "~> 4.4"
