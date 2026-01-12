@@ -101,7 +101,10 @@ jobs:
           DATABASE_URL: mysql2://127.0.0.1:3306
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test
+        run: |
+          bin/rails db:create
+          bundle exec rake ridgepole:apply RAILS_ENV=test
+          bin/rails test
 
   system-test:
     runs-on: ubuntu-latest
@@ -139,7 +142,10 @@ jobs:
           DATABASE_URL: mysql2://127.0.0.1:3306
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test:system
+        run: |
+          bin/rails db:create
+          bundle exec rake ridgepole:apply RAILS_ENV=test
+          bin/rails test:system
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
