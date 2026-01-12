@@ -89,24 +89,24 @@
           <h2 class="text-2xl font-bold text-slate-900 dark:text-white">ユーザー登録</h2>
           <p class="text-sm text-slate-500 dark:text-slate-300 mt-2">必要な情報を入力して、すぐに始めましょう。</p>
         </div>
-        <form action="/auth/sign_up" method="post" data-action="submit->auth-modal#submit" class="space-y-4">
+        <form action="/users" method="post" data-action="submit->auth-modal#submit" class="space-y-4">
           <div data-auth-modal-target="errors" class="hidden rounded-xl border border-rose-200 bg-rose-50 text-rose-600 text-sm px-4 py-3"></div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">お名前</label>
-            <input required name="name" type="text" placeholder="Taro Yamada" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
+            <input required name="user[name]" type="text" placeholder="Taro Yamada" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
           </div>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">メールアドレス</label>
-            <input required name="email" type="email" placeholder="you@example.com" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
+            <input required name="user[email]" type="email" placeholder="you@example.com" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
           </div>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">パスワード</label>
-            <input required name="password" type="password" placeholder="8文字以上" minlength="8" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
+            <input required name="user[password]" type="password" placeholder="8文字以上" minlength="8" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
           </div>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">パスワード（確認）</label>
-            <input required name="password_confirmation" type="password" placeholder="もう一度入力" minlength="8" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
+            <input required name="user[password_confirmation]" type="password" placeholder="もう一度入力" minlength="8" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring focus:ring-purple-200/50 transition">
           </div>
           <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white font-semibold shadow-lg shadow-purple-500/30 hover:opacity-90 transition">
             登録して始める
@@ -127,16 +127,16 @@
           <h2 class="text-2xl font-bold text-slate-900 dark:text-white">サインイン</h2>
           <p class="text-sm text-slate-500 dark:text-slate-300 mt-2">続きからすぐに始められます。</p>
         </div>
-        <form action="/auth/sign_in" method="post" data-action="submit->auth-modal#submit" class="space-y-4">
+        <form action="/users/sign_in" method="post" data-action="submit->auth-modal#submit" class="space-y-4">
           <div data-auth-modal-target="errors" class="hidden rounded-xl border border-rose-200 bg-rose-50 text-rose-600 text-sm px-4 py-3"></div>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">メールアドレス</label>
-            <input required name="email" type="email" placeholder="you@example.com" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-indigo-400 focus:ring focus:ring-indigo-200/50 transition">
+            <input required name="user[email]" type="email" placeholder="you@example.com" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-indigo-400 focus:ring focus:ring-indigo-200/50 transition">
           </div>
           <div>
             <label class="block text-sm font-medium text-slate-700 dark:text-slate-200">パスワード</label>
-            <input required name="password" type="password" placeholder="パスワードを入力" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-indigo-400 focus:ring focus:ring-indigo-200/50 transition">
+            <input required name="user[password]" type="password" placeholder="パスワードを入力" class="mt-2 w-full rounded-xl border border-slate-200/80 dark:border-slate-700/70 bg-white/80 dark:bg-slate-800/80 px-4 py-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-indigo-400 focus:ring focus:ring-indigo-200/50 transition">
           </div>
           <div class="flex items-center justify-between text-sm">
             <label class="flex items-center gap-2 text-slate-500 dark:text-slate-300">

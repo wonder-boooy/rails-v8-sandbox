@@ -14,9 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  namespace :auth do
-    post "sign_up", to: "registrations#create"
-    post "sign_in", to: "sessions#create"
-    delete "sign_out", to: "sessions#destroy"
-  end
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
 end
