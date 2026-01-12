@@ -31,28 +31,35 @@ export default class extends Controller {
     event.preventDefault()
     const form = event.target
     const errorsTarget = form.querySelector("[data-auth-modal-target='errors']")
-    const errors = []
+    const formData = new FormData(form)
+    const token = document.querySelector("meta[name='csrf-token']")?.content
 
-    form.querySelectorAll("input[required]").forEach((input) => {
-      if (!input.value.trim()) {
-        errors.push(`${input.previousElementSibling?.textContent || "必須"}を入力してください。`)
-      }
+    fetch(form.action, {
+      method: form.method || "post",
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-Token": token
+      },
+      body: formData,
+      credentials: "same-origin"
     })
-
-    const passwordInput = form.querySelector("input[name='password']")
-    if (passwordInput && passwordInput.value && passwordInput.value.length < 8) {
-      errors.push("パスワードは8文字以上で入力してください。")
-    }
-
-    if (errors.length > 0) {
-      errorsTarget.textContent = errors.join(" ")
-      errorsTarget.classList.remove("hidden")
-      return
-    }
-
-    errorsTarget.classList.add("hidden")
-    form.reset()
-    this.close()
+      .then(async (response) => {
+        const data = await response.json().catch(() => ({}))
+        if (!response.ok) {
+          throw data
+        }
+        return data
+      })
+      .then(() => {
+        errorsTarget.classList.add("hidden")
+        form.reset()
+        this.close()
+      })
+      .catch((data) => {
+        const errors = data?.errors || ["入力内容をご確認ください。"]
+        errorsTarget.textContent = errors.join(" ")
+        errorsTarget.classList.remove("hidden")
+      })
   }
 
   clearErrors() {
