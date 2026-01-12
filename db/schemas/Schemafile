@@ -1,1 +1,2 @@
-require_relative "user_profiles"
+require "users.rb"
+require "user_profiles.rb"
