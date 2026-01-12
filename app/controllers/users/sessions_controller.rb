@@ -7,7 +7,7 @@ module Users
 
       if resource
         sign_in(resource_name, resource)
-        render json: { ok: true, user: { name: resource.name } }
+        render json: { ok: true, user: { name: resource.user_profile&.name } }
       else
         render json: { ok: false, errors: ["メールアドレスまたはパスワードが正しくありません。"] },
                status: :unprocessable_entity

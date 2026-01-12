@@ -1,5 +1,5 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :validatable
 
-  validates :name, presence: true
+  has_one :user_profile, dependent: :destroy
 end
