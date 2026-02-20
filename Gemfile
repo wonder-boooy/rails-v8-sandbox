@@ -42,4 +42,4 @@ end
 
 gem "tailwindcss-rails", "~> 4.4"
 gem "ridgepole", "~> 3.1"
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
